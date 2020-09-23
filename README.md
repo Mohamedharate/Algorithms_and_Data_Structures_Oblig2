@@ -1,0 +1,2 @@
+# ALGDATOblig2
+ 
