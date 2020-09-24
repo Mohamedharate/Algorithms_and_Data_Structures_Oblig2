@@ -14,6 +14,7 @@ import java.util.function.Predicate;
 
 public class DobbeltLenketListe<T> implements Liste<T> {
 
+
     /**
      * Node class
      * @param <T>
