@@ -113,6 +113,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 temp = temp.neste;
                 if(temp == verdi) {
                     indeks = count;
+                    break;
                 }
             count++;
             }
