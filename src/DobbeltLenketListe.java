@@ -77,13 +77,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public void leggInn(int indeks, T verdi) {
+    public void leggInn(int indeks, T verdi) { //oppgave 5
         throw new UnsupportedOperationException();
     }
 
     @Override
-    public boolean inneholder(T verdi) {
-        throw new UnsupportedOperationException();
+    public boolean inneholder(T verdi) { //oppgave 4
+        boolean inneholder = false;
+
+        Node temp = hode;
+
+        while(temp != null) {
+            temp = temp.neste;
+            if(temp == verdi) {
+                inneholder = true;
+            }
+        }
+
+        return inneholder;
     }
 
     @Override
@@ -92,8 +103,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     @Override
-    public int indeksTil(T verdi) {
-        throw new UnsupportedOperationException();
+    public int indeksTil(T verdi) { //oppgave 4
+        int count = 0;
+        int indeks;
+        Node temp = hode;
+
+        if(inneholder(verdi)) {
+            while(temp != null) {
+                temp = temp.neste;
+                if(temp == verdi) {
+                    indeks = count;
+                }
+            count++;
+            }
+        }
+
+        else {
+            return -1;
+        }
+
+        return count;
     }
 
     @Override
