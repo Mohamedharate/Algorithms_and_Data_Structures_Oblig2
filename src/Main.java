@@ -1,6 +1,15 @@
 public class Main {
     public static void main(String[] args) {
-        Liste<String> liste = new DobbeltLenketListe<>();
+
+        Integer[] s = {null,9,null,9,8,0};
+
+        Liste<Integer> liste = new DobbeltLenketListe<>(s);
+
+
+        System.out.println(liste.antall() + " " + liste.tom());
+
+
+
 
 
         /* Oppgave 4

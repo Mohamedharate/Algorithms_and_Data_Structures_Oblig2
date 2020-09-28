@@ -1,19 +1,13 @@
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
-import java.util.Comparator;
-import java.util.ConcurrentModificationException;
-import java.util.NoSuchElementException;
-import java.util.StringJoiner;
+import java.util.*;
 
-import java.util.Iterator;
-import java.util.Objects;
 import java.util.function.Predicate;
 
 
 
 public class DobbeltLenketListe<T> implements Liste<T> {
-
 
     /**
      * Node class
@@ -32,20 +26,72 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         private Node(T verdi) {
             this(verdi, null, null);
         }
+
     }
 
     // instansvariabler
-    private Node<T> hode;          // peker til den første i listen
+    private Node hode;          // peker til den første i listen
     private Node<T> hale;          // peker til den siste i listen
     private int antall;            // antall noder i listen
     private int endringer;         // antall endringer i listen
 
     public DobbeltLenketListe() {
-        throw new UnsupportedOperationException();
+        hode = hale = null;
+        antall = 0;
+        endringer = 0;
+
     }
 
     public DobbeltLenketListe(T[] a) {
-        throw new UnsupportedOperationException();
+        // Hvis tabellen er null skal brukeren få feil melding
+
+        Objects.requireNonNull(a,"Tabellen a er null!");
+
+        antall = 0;
+
+
+        // Det første vi gjør er å finne verdien til "hode". Det gjør vi ved å finne indexen første verdien i
+        // arrayet som ikke er null.
+        int index = 0;
+        while (index < a.length && a[index] == null)
+            index++;
+
+        /*Hvis indexen er mindre enn lengden på arrayet, hode og hale skal være lik den første verdien i arrayet
+        som er a[index]
+         */
+
+        if (index < a.length){
+            hode = hale = new Node<>(a[index]);
+            index++;
+            antall++;
+        }
+
+
+        /*
+        * Når vi kommer hit, da er alle verdiene til index er null.
+        * Både hode og hale er lik a[index] som er første verdien i arrayet som ikke er null
+        * Vi looper gjennom arrayet fra index siden vi allerede har sjekket de tidligere verdiene
+        * Vi sjekker at verdien ikke er null, hvis ja så blir denne verdien den nye hale-verdien.
+        * Vi øker antall med en for hver gang vi får en ny node. Det vil si at antall er lik antall noder i listen.
+        */
+        for(index = index;index<a.length;index++){
+            if (a[index] != null){
+                hale.neste = new Node<>(a[index],hale,null);
+                hale = hale.neste;
+                antall++;
+            }
+        }
+        // Hvis a inneholder en eller flere null-verdier, skal de ikke tas med. Dvs listen skal skal inneholde
+        // de verdiene av a som ikke er null.
+
+
+        // Verdiene skal ligge i samme rekkefølge
+
+        // Første verdi skal peke til hode og siste til hale.
+        // Hver node skal ha neste og forrige
+        // hale.neste skal være null
+        // Hvis tabellen inneholder kun en verdi, skal både hode og hale peke til samme node.
+
     }
 
     public Liste<T> subliste(int fra, int til){
@@ -58,17 +104,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         int count  = 0;
 
         while (temp != null){
-            count++;
             temp = temp.neste;
+            count++;
         }
         return count;
     }
 
     @Override
     public boolean tom() {
-
-        throw new UnsupportedOperationException();
-
+       return antall() == 0;
     }
 
     @Override
