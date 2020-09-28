@@ -117,7 +117,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean leggInn(T verdi) {
-        throw new UnsupportedOperationException();
+
+        //Hvis verdien er null, får brukeren en feil melding
+        Objects.requireNonNull(verdi,"Null verdier er ikke tillatt!");
+
+        //Sjekker om listen er tom, hvis ja så skal både hode og hale ha samme verdi som er "verdi"
+        if (hode == null){
+            hode = hale = new Node<>(verdi);
+            hale.forrige = null;//forrigepekeren til hale skal være null i og med at hale = hode = newnode
+        }
+        else {
+            //Hvis listen inneholder 1 eller flere elementer skal vi gjør den nye node-en til hale
+            hale.neste = new Node<>(verdi,hale,null);
+            hale = hale.neste;
+
+        }
+        //Antall økes
+        antall++;
+        return true;
     }
 
     @Override
@@ -195,18 +212,18 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         StringBuilder res = new StringBuilder();
         if (tom())
-            return "";
+            return "[]";
 
         Node current = hode;
 
         while (current != null){
             res.append(current.verdi);
             if (current.neste != null){
-                res.append(" ");
+                res.append(", ");
             }
             current = current.neste;
         }
-        return res + " ";
+        return "[" + res + "]";
 
     }
 
@@ -214,19 +231,22 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         StringBuilder innholdOmvendt = new StringBuilder();
 
         if (tom())
-            return "";
+            return "[]";
+
+        if (antall()==1){
+            hale = hode;
+        }
 
         Node current = hale;
 
         while (current != null){
             innholdOmvendt.append(current.verdi);
             if (current.forrige != null){
-                innholdOmvendt.append(" ");
+                innholdOmvendt.append(", ");
             }
             current = current.forrige;
         }
-        return innholdOmvendt + " ";
-
+        return "[" + innholdOmvendt + "]";
     }
 
     @Override
