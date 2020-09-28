@@ -192,11 +192,41 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException();
+
+        StringBuilder res = new StringBuilder();
+        if (tom())
+            return "";
+
+        Node current = hode;
+
+        while (current != null){
+            res.append(current.verdi);
+            if (current.neste != null){
+                res.append(" ");
+            }
+            current = current.neste;
+        }
+        return res + " ";
+
     }
 
     public String omvendtString() {
-        throw new UnsupportedOperationException();
+        StringBuilder innholdOmvendt = new StringBuilder();
+
+        if (tom())
+            return "";
+
+        Node current = hale;
+
+        while (current != null){
+            innholdOmvendt.append(current.verdi);
+            if (current.forrige != null){
+                innholdOmvendt.append(" ");
+            }
+            current = current.forrige;
+        }
+        return innholdOmvendt + " ";
+
     }
 
     @Override
