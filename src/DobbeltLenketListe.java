@@ -29,6 +29,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     }
 
+    // hjelpemetode
+    private Node<T> finnNode(int indeks)
+    {
+        throw new UnsupportedOperationException("Ikke laget ennå!");
+    }
+
     // instansvariabler
     private Node hode;          // peker til den første i listen
     private Node<T> hale;          // peker til den siste i listen
