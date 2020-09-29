@@ -27,6 +27,9 @@ public class Main {
         {
             liste.leggInn(i);
             System.out.println(liste.toString() + " " + liste.omvendtString());
+            liste.nullstill();
+
+            System.out.println(liste.toString());
         }
 
 

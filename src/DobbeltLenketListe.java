@@ -1,11 +1,8 @@
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
-
 import java.util.*;
 
 import java.util.function.Predicate;
-
-
 
 public class DobbeltLenketListe<T> implements Liste<T> {
 
@@ -26,7 +23,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         private Node(T verdi) {
             this(verdi, null, null);
         }
-
     }
 
     // instansvariabler
@@ -48,7 +44,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Objects.requireNonNull(a,"Tabellen a er null!");
 
         antall = 0;
-
+        endringer = 0;
 
         // Det første vi gjør er å finne verdien til "hode". Det gjør vi ved å finne indexen første verdien i
         // arrayet som ikke er null.
@@ -66,7 +62,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             antall++;
         }
 
-
         /*
         * Når vi kommer hit, da er alle verdiene til index er null.
         * Både hode og hale er lik a[index] som er første verdien i arrayet som ikke er null
@@ -81,17 +76,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 antall++;
             }
         }
-        // Hvis a inneholder en eller flere null-verdier, skal de ikke tas med. Dvs listen skal skal inneholde
-        // de verdiene av a som ikke er null.
-
-
-        // Verdiene skal ligge i samme rekkefølge
-
-        // Første verdi skal peke til hode og siste til hale.
-        // Hver node skal ha neste og forrige
-        // hale.neste skal være null
-        // Hvis tabellen inneholder kun en verdi, skal både hode og hale peke til samme node.
-
     }
 
     public Liste<T> subliste(int fra, int til){
@@ -130,7 +114,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             //Hvis listen inneholder 1 eller flere elementer skal vi gjør den nye node-en til hale
             hale.neste = new Node<>(verdi,hale,null);
             hale = hale.neste;
-
         }
         //Antall økes
         antall++;
@@ -204,16 +187,32 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        throw new UnsupportedOperationException();
+
+        //Metode 1
+        Node<T> current = hode.neste;
+
+        while(current != null) {
+            current.forrige = null;
+            current = current.neste;
+        }
+        hode = hale = null;
+        antall = 0;
+        endringer++;
     }
 
     @Override
     public String toString() {
 
-        StringBuilder res = new StringBuilder();
+        StringBuilder res = new StringBuilder("[");
         if (tom())
             return "[]";
 
+
+        for(Node<T> i = hode ; i != hale ; i = i.neste)
+            res.append(i.verdi).append(", ");
+
+
+         /*
         Node current = hode;
 
         while (current != null){
@@ -223,20 +222,25 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             current = current.neste;
         }
-        return "[" + res + "]";
+          */
 
+        return res.append(hale.verdi).append("]").toString();
     }
 
     public String omvendtString() {
-        StringBuilder innholdOmvendt = new StringBuilder();
+        StringBuilder innholdOmvendt = new StringBuilder("[");
 
         if (tom())
             return "[]";
+
+        for (Node<T> i = hale; i != hode; i=i.forrige)
+            innholdOmvendt.append(i.verdi).append(", ");
 
         if (antall()==1){
             hale = hode;
         }
 
+        /*
         Node current = hale;
 
         while (current != null){
@@ -246,7 +250,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             current = current.forrige;
         }
-        return "[" + innholdOmvendt + "]";
+
+         */
+        return innholdOmvendt.append(hode.verdi).append("]").toString();
     }
 
     @Override
