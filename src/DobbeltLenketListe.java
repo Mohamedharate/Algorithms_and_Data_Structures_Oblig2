@@ -298,7 +298,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     } // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        throw new UnsupportedOperationException();
+
+        for(int i = 0;i <liste.antall();i++){
+            T max = liste.hent(i);
+
+            for (int j = 1; j<liste.antall();j++){
+                if ((c.compare(liste.hent(j),max)>0)){
+                    max = liste.hent(j);
+                }
+            }
+
+            liste.fjern(0);
+            liste.leggInn(max);
+        }
     }
 
 } // class DobbeltLenketListe
