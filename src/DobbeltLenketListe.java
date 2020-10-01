@@ -28,8 +28,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     // hjelpemetode
     private Node<T> finnNode(int indeks)
     {
-
-        indeksKontroll(indeks, false);    //indeks-kontroll fra kompendiet
         Node<T> p;
 
         //Sjekker om indeksen vi skal finne er i første eller siste halvdel av arrayet
