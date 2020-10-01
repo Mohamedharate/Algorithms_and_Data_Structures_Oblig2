@@ -110,6 +110,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //Kontrollerer at intervalet er gyldig
         this.fratilKontroll(antall, fra, til);
 
+        /*
         //Opprette sublisten
         DobbeltLenketListe<T> sub = new DobbeltLenketListe<>();
 
@@ -121,7 +122,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             sub.leggInn(finnNode(i).verdi);
         }
 
-        return sub;
+        return sub;*/
+
+        int lengde = til-fra;
+        T[] a = (T[])new Object[lengde];
+
+        Node<T> s = finnNode(fra);
+
+        for (int i = 0; i<lengde; i++){
+            a[i] = s.verdi;
+            s=s.neste;
+        }
+
+        return new DobbeltLenketListe<>(a);
     }
 
     public static void fratilKontroll(int antall, int fra, int til)
