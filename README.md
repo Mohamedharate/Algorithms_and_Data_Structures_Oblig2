@@ -27,6 +27,32 @@ I oppgaven har vi hatt følgende arbeidsfordeling:
 
 # Beskrivelse av oppgaveløsning (maks 5 linjer per oppgave)
 
-* Oppgave 1: Løste ved å implementere..
-* Oppgave 2: ...
+* Oppgave 1: Løste ved å implementere variabelen index som skal finne det første elementet i tabellen 
+som ikke er null. Dette gjorde jeg ved bruk av en while-løkke som går gjennom tabellen fra index=0 og plusser 
+index med 1 for for a[index] == null. Vi går ut av løkken når vi finner et element som ikke er null. Deretter sjekker 
+jeg om indexen er mindre enn a.length, altså indexen til et tall i tabellen a. Hvis ja, setter jeg hode = hale = det
+første elementet som ikke er lik null. Vi har nå en liste består av kun et element. Så går vi gjennom tabellen a fra index
+til a.length. Vi sjekker om a[index] != null. Hvis ja, lager vi en ny node som skal plasseres etter hale og setter hale 
+lik det nye elementet.
+        
+                                                          
+* Oppgave 2: 
+2A - toString og omvendtString løste jeg ved å opprette en stringBuilder som inneholder "[". Det først jeg gjør er
+å sjekke at listen har innhold. Hvis ikke returner jeg "[]", men hvis listen har innhold, bruker jeg en for-løkke
+for å gå gjennom listens elementer og legger til verdien til hvert element til i stringBuilder-en. returner så ut stringBuileren. 
 
+
+2B - Denne oppgaven valgte jeg å løse ved først å sjekke om listen er tom. Hvis listen er tom da skal verdi være
+både hode og hale. Hvis listen har 1 eller flere elementer, skal verdi legges bakerst. Altså vi lager en node og setter 
+den til ny hale.
+
+
+
+* Oppgave 3:
+* Oppgave 4:
+* Oppgave 5:
+* Oppgave 6:
+* Oppgave 7:
+* Oppgave 8:
+* Oppgave 9:
+* Oppgave 10:

@@ -258,6 +258,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T fjern(int indeks) {
+
         throw new UnsupportedOperationException();
     }
 
