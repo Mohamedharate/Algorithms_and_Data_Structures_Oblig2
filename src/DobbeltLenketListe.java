@@ -28,10 +28,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     // hjelpemetode
     private Node<T> finnNode(int indeks)
     {
+
+        indeksKontroll(indeks, false);    //indeks-kontroll fra kompendiet
         Node<T> p;
 
         //Sjekker om indeksen vi skal finne er i første eller siste halvdel av arrayet
-
         if (indeks < (antall/2)){
             //Vi leter etter en indeks i første halvdel av arrayet
             p = hode;
@@ -47,7 +48,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T hent(int indeks) {
-        indeksKontroll(indeks, false);
+        indeksKontroll(indeks, false);      //indeksKontroll fra kompendiet
         return finnNode(indeks).verdi;
     }
 
@@ -116,7 +117,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Node<T> s_hode = sub.hode;
         s_hode = finnNode(fra);
 
-        sub.antall++;
         for (int i =til+1; i<fra; i++){
             sub.leggInn(finnNode(i).verdi);
         }
@@ -132,7 +132,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         if (til > antall)                          // til er utenfor tabellen
             throw new IndexOutOfBoundsException
-                    ("til(" + til + ") > tablengde(" + antall + ")");
+                    ("til(" + til + ") > antall(" + antall + ")");
 
         if (fra > til)                                // fra er større enn til
             throw new IllegalArgumentException
