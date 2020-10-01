@@ -20,7 +20,7 @@ public class Main {
 
 
 
-        DobbeltLenketListe<Integer> liste = new DobbeltLenketListe<>();
+/*        DobbeltLenketListe<Integer> liste = new DobbeltLenketListe<>();
 
         System.out.println(liste.toString() + " " + liste.omvendtString());
         for (int i = 1; i <= 3; i++)
@@ -32,7 +32,12 @@ public class Main {
             System.out.println(liste.toString());
         }
 
+*/
+    //Oppgave 3a)
+    Integer[] a = {3,6,1,2,7};
+    DobbeltLenketListe<Integer> liste = new DobbeltLenketListe<Integer>(a);
 
+    System.out.println(liste);
 
 
 

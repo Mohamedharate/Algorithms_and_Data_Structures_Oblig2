@@ -28,8 +28,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     // hjelpemetode
     private Node<T> finnNode(int indeks)
     {
-        throw new UnsupportedOperationException("Ikke laget ennå!");
+        //Sjekker om indeksen vi skal finne er i første eller siste halvdel av arrayet
+        if (indeks < (antall/2)-1){
+            Node<T> p = hode;           //Vi leter etter en indeks i første halvdel av arrayet
+            for (int i = 0; i<indeks; i++){
+                p=p.neste;
+            }
+            return p;
+        }
+        else{
+            Node<T> p = hale;           //Vi leter etter en indeks i andre halvdel av arrayet
+            for (int i = antall; i>indeks; i--){
+                p=p.forrige;
+            }
+            return p;
+        }
     }
+
 
     // instansvariabler
     private Node hode;          // peker til den første i listen
