@@ -33,12 +33,6 @@ public class Main {
         }
 
 */
-    //Oppgave 3a)
-    Integer[] a = {3,6,1,2,7};
-    DobbeltLenketListe<Integer> liste = new DobbeltLenketListe<Integer>(a);
-
-    System.out.println(liste);
-    System.out.println(liste.hent(4));
 
 
 

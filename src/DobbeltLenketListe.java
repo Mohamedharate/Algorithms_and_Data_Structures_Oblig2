@@ -31,15 +31,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         Node<T> p;
 
         //Sjekker om indeksen vi skal finne er i første eller siste halvdel av arrayet
+
         if (indeks < (antall/2)){
-            p = hode;           //Vi leter etter en indeks i første halvdel av arrayet
+            //Vi leter etter en indeks i første halvdel av arrayet
+            p = hode;
             for (int i = 0; i<indeks; i++) p=p.neste;
         }
         else{
-            p = hale;           //Vi leter etter en indeks i andre halvdel av arrayet
-            for (int i = antall; i>indeks; i--) p=p.forrige;
+            //Vi leter etter en indeks i andre halvdel av arrayet
+            p = hale;
+            for (int i = antall-1; i>indeks; i--) p=p.forrige;
         }
         return p;
+    }
+
+    @Override
+    public T hent(int indeks) {
+        indeksKontroll(indeks, false);
+        return finnNode(indeks).verdi;
     }
 
 
@@ -97,7 +106,37 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     }
 
     public Liste<T> subliste(int fra, int til){
-        throw new UnsupportedOperationException();
+        //Kontrollerer at intervalet er gyldig
+        this.fratilKontroll(antall, fra, til);
+
+        //Opprette sublisten
+        DobbeltLenketListe<T> sub = new DobbeltLenketListe<>();
+
+        //Sett hode lik tallet på fra-indeksen
+        Node<T> s_hode = sub.hode;
+        s_hode = finnNode(fra);
+
+        sub.antall++;
+        for (int i =til+1; i<fra; i++){
+            sub.leggInn(finnNode(i).verdi);
+        }
+
+        return sub;
+    }
+
+    public static void fratilKontroll(int antall, int fra, int til)
+    {
+        if (fra < 0)                                  // fra er negativ
+            throw new IndexOutOfBoundsException
+                    ("fra(" + fra + ") er negativ!");
+
+        if (til > antall)                          // til er utenfor tabellen
+            throw new IndexOutOfBoundsException
+                    ("til(" + til + ") > tablengde(" + antall + ")");
+
+        if (fra > til)                                // fra er større enn til
+            throw new IllegalArgumentException
+                    ("fra(" + fra + ") > til(" + til + ") - illegalt intervall!");
     }
 
     @Override
@@ -157,12 +196,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         return inneholder;
-    }
-
-    @Override
-    public T hent(int indeks) {
-        indeksKontroll(indeks, false);
-        return finnNode(indeks).verdi;
     }
 
     @Override
