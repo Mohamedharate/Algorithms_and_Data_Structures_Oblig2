@@ -38,6 +38,8 @@ public class Main {
     DobbeltLenketListe<Integer> liste = new DobbeltLenketListe<Integer>(a);
 
     System.out.println(liste);
+    System.out.println(liste.hent(4));
+
 
 
 
