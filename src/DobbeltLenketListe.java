@@ -122,6 +122,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         return sub;*/
 
+
         int lengde = til-fra;
         T[] a = (T[])new Object[lengde];
 
