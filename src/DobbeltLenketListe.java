@@ -241,6 +241,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (nyverdi == null){
             throw new NullPointerException();
         }
+        //Kast indexoutofbounds-exception dersom indeks er større eller lik antall
+        else if(indeks >=antall){
+            throw new IndexOutOfBoundsException("Indeksen er utenfor listen");
+        }
 
         Node<T> node = finnNode(indeks);
 
