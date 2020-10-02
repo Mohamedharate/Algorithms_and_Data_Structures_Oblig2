@@ -258,21 +258,39 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public boolean fjern(T verdi) {
 
-        Node<T> node = hode;
-        Boolean endret = false;
-
-        //For løkke gjennom hele listen, slett og returner når man finner første instans
-        for (int i = 0; i<antall; i++) {
-            if (node.verdi != verdi) {
-                node = node.neste;
-            } else if (node.verdi == verdi){
-                fjern(i);
-                return true;
-            }else{
-                return false;
-            }
+        if (verdi == null){
+            return false;
         }
 
+        Boolean endret = false;
+
+        //For løkke gjennom hele listen, sletter og returnerer når den finner første instans
+        for (Node<T> n = hode; n!=null; n = n.neste) {
+            if (n.verdi.equals(verdi)){
+                if (hode==hale) {//Kun ett element
+                    hode=hale=null;
+
+                }else if (n == hode){ //Det er det første elementet vi skal fjerne
+                    hode = n.neste;
+                    hode.forrige = null;
+
+                }else if(n == hale){ //Det er det siste elementet vi skal fjerne
+                    hale = n.forrige;
+                    hale.neste = null;
+                }
+                else {
+                    Node<T> p = n.forrige;
+                    Node<T> r = n.neste;
+                    p.neste = r;
+                    r.forrige = p;
+                }
+
+                endringer++;
+                antall--;
+                endret = true;
+                return endret;
+            }
+        }
         return endret;
     }
 
@@ -285,6 +303,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         else if(hode == hale){ //Listen har kun ett element
             Node<T> node = hode;
             hode=hale=null;
+            antall--;
+            endringer++;
             return node.verdi;
         }
         else if (indeks == 0){ // Vi fjerner første verdi en liste
