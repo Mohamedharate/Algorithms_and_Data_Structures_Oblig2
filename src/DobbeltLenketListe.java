@@ -292,6 +292,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
         }
         return endret;
+
     }
 
     @Override
