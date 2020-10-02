@@ -1,3 +1,6 @@
+import java.util.Comparator;
+
+
 public class Main {
     public static void main(String[] args) {
 
@@ -17,7 +20,7 @@ public class Main {
         System.out.println(l1.toString() + " " + l2.toString() + " " + l3.toString());
         System.out.println(l1.omvendtString() + " " + l2.omvendtString() + " " + l3.omvendtString());
          */
-
+/*
 
 
 /*        DobbeltLenketListe<Integer> liste = new DobbeltLenketListe<>();
@@ -35,6 +38,14 @@ public class Main {
 */
 
 
+
+
+        String[] navn = {"Lars","Anders","Bodil","Kari","Per","Berit"};
+        Liste<String> liste1 = new DobbeltLenketListe<>(navn);
+
+        DobbeltLenketListe.sorter(liste1, Comparator.naturalOrder());
+
+        System.out.println(liste1); // [Anders, Berit, Bodil, Kari, Lars, Per]
 
 
         /* Oppgave 4
