@@ -26,7 +26,7 @@ Vi har brukt git til å dokumentere arbeidet vårt. Vi har 16 commits totalt, og
 
 I oppgaven har vi hatt følgende arbeidsfordeling:
 * Mohamed K. Harate har hatt hovedansvar for oppgave 1, 2, og 7. 
-* Else har hatt hovedansvar for oppgave 2, 4, og 6. 
+* Andreas Torres Hansen har hatt hovedansvar for oppgave 3, 6, og 9. 
 * Fatima har hatt hovedansvar for oppgave 7 og 8. 
 * Vi har i fellesskap løst oppgave 10. 
 
