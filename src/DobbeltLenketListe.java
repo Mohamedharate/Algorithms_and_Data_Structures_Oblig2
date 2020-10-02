@@ -59,7 +59,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             throw new IndexOutOfBoundsException("Indeksen er utenfor listen");
         }
 
-       // indeksKontroll(indeks, false);            //Indekskontroll gir veldig lang ventetid
+        //indeksKontroll(indeks, false);            //Indekskontroll gir veldig lang ventetid
 
 
 
@@ -300,10 +300,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public T fjern(int indeks) {
 
+
         if (hode == null || indeks > antall-1 || indeks < 0){ //Listen er tom
             throw new IndexOutOfBoundsException("Arrayet er tomt");
         }
-        else if(hode == hale){ //Listen har kun ett element
+
+        if(hode == hale){ //Listen har kun ett element
             Node<T> node = hode;
             hode=hale=null;
             antall--;

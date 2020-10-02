@@ -35,4 +35,5 @@ public interface Liste<T> extends Beholder<T> {
             throw new IndexOutOfBoundsException(melding(indeks));
         }
     }
+
 }  // Liste

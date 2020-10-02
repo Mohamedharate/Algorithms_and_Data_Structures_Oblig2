@@ -54,9 +54,30 @@ den til ny hale.
 
 
 * Oppgave 3:
+
+3A:
+finnNode() valgte jeg å løse ved hjelp av en enkel if-else-statement, der jeg sjekker om hvorvidt vi befinner oss i første eller
+andre halvdel av den lenkede listen. Hent() og oppdater() bruker finnNode()-metoden, for å finne verdien de skal jobbe med og returnerer eller bytter
+ut en gammel verdi henholdsvis.
+
+3B:
+I metoden sub-liste har jeg valgt å opprette et array av den generiske klassen T, som jeg fyller med verdiene
+fra "fra"-indeksen til "til"-indeksen som blir tatt inn som parametere. Deretter bruker jeg bare konstruktøren 
+DoubleLinkedList(T[]), og oppretter en ny lenket liste av arrayet.
+
 * Oppgave 4:
 * Oppgave 5:
 * Oppgave 6:
+
+Fjern(index):
+Denne metoden har jeg valgt å løse ved hjelp av en enkelt if-statement som sjekker etter alle de ulike spesialtilfellene
+som kan oppstå. Dersom den ikke finner noen av disse, antar den at noden vi leter etter har både en neste- og forrige-peker 
+og at disse kan festes til hverandre.
+
+Fjern(verdi): 
+Denne metoden har jeg valgt å løse ved å implementere en for-løkke som går gjennom hele listen fram til den finner verdien vi leter etter.
+Da vil den slette denne verdien på samme måte som fjern(indeks)-metoden gjør, ved å sjekke etter spesialtilfellene.
+
 * Oppgave 7:
 * Oppgave 8:
 * Oppgave 9:
