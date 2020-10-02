@@ -257,31 +257,68 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public boolean fjern(T verdi) {
-        throw new UnsupportedOperationException();
+
+        Node<T> node = hode;
+        Boolean endret = false;
+
+        //For løkke gjennom hele listen, slett og returner når man finner første instans
+        for (int i = 0; i<antall; i++) {
+            if (node.verdi != verdi) {
+                node = node.neste;
+            } else if (node.verdi == verdi){
+                fjern(i);
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        return endret;
     }
 
     @Override
     public T fjern(int indeks) {
 
-
-        if (hode == null){ //Listen er tom
-            return null;
+        if (hode == null || indeks > antall-1 || indeks < 0){ //Listen er tom
+            throw new IndexOutOfBoundsException("Arrayet er tomt");
         }
         else if(hode == hale){ //Listen har kun ett element
             Node<T> node = hode;
             hode=hale=null;
             return node.verdi;
         }
+        else if (indeks == 0){ // Vi fjerner første verdi en liste
+            Node<T> node = hode;
+            hode = hode.neste;
+            hode.forrige = null;
 
+            antall--;
+            endringer++;
 
+            return node.verdi;
+        }
+        else if(indeks == antall-1){ //Vi fjerner siste elementet i en liste
+            Node<T> node = hale;
+            hale=hale.forrige;
+            hale.neste = null;
+
+            antall--;
+            endringer++;
+
+            return node.verdi;
+        }
 
         Node<T> q = finnNode(indeks);
 
+        //Vi lar java slette noden selv, ved å fjerne koblingene til noden q
         Node<T> p = q.forrige;
         Node<T> r = q.neste;
 
         p.neste=r;
         r.forrige = p;
+
+        antall--;
+        endringer++;
 
         return q.verdi;
     }
