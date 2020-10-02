@@ -34,19 +34,35 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (indeks < (antall/2)){
             //Vi leter etter en indeks i første halvdel av arrayet
             p = hode;
-            for (int i = 0; i<indeks; i++) p=p.neste;
+            for (int i = 0; i<indeks; i++) p=p.neste; //Fra kompendiet
+
+            return p;
         }
         else{
             //Vi leter etter en indeks i andre halvdel av arrayet
             p = hale;
             for (int i = antall-1; i>indeks; i--) p=p.forrige;
+
+            return p;
         }
-        return p;
     }
 
     @Override
     public T hent(int indeks) {
-        indeksKontroll(indeks, false);      //indeksKontroll fra kompendiet
+
+        //Kontrollerer at indeks ikke er null/
+        if (indeks < 0){
+            throw new IndexOutOfBoundsException();
+        }
+        //Kast indexoutofbounds-exception dersom indeks er større eller lik antall
+        else if(indeks >=antall){
+            throw new IndexOutOfBoundsException("Indeksen er utenfor listen");
+        }
+
+       // indeksKontroll(indeks, false);            //Indekskontroll gir veldig lang ventetid
+
+
+
         return finnNode(indeks).verdi;
     }
 
@@ -106,23 +122,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public Liste<T> subliste(int fra, int til){
         //Kontrollerer at intervalet er gyldig
-        this.fratilKontroll(antall, fra, til);
+        fratilKontroll(antall, fra, til);
 
-        /*
         //Opprette sublisten
-        DobbeltLenketListe<T> sub = new DobbeltLenketListe<>();
-
-        //Sett hode lik tallet på fra-indeksen
-        Node<T> s_hode = sub.hode;
-        s_hode = finnNode(fra);
-
-        for (int i =til+1; i<fra; i++){
-            sub.leggInn(finnNode(i).verdi);
-        }
-
-        return sub;*/
-
-
         int lengde = til-fra;
         T[] a = (T[])new Object[lengde];
 
