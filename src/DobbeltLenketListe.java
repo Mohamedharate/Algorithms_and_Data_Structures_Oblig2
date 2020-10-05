@@ -455,8 +455,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove(){
+            if (!fjernOK){
+                throw new IllegalStateException("Denne metoden kan ikke kalles");
+            }
+            fjernOK = false; //Vi kan ikke fjerne denne igjen
+
+            //Sjekker etter spesialtilfeller
+            if(antall == 1){ //Vi har kun ett element
+                hode=hale=null;
+            }else if (denne == null){ //Vi er på siste element
+                hale = denne.forrige;
+                hale.neste = null;
+            }
+            else if(denne.forrige == hode){ //Vi skal fjerne den første
+
+            }
+            iteratorendringer++;
             throw new UnsupportedOperationException();
-           // iteratorendringer++;
         }
 
     } // class DobbeltLenketListeIterator
