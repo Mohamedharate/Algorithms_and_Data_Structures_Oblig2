@@ -584,7 +584,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         //Antar at første er sortert, sjekker om resten er større eller mindre
-        for (int i=1;i<antall;i++){                             ////[c,b,a] -> [b,c,a] ->[b,a,c]->[a,b,c]
+        for (int i=1;i<antall;i++){
 
             T verdi = liste.hent(i);
 
