@@ -490,11 +490,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public Iterator<T> iterator() {
-        throw new UnsupportedOperationException();
+        return new DobbeltLenketListeIterator();
     }
 
     public Iterator<T> iterator(int indeks) {
-        throw new UnsupportedOperationException();
+        indeksKontroll(indeks,false);
+        return new DobbeltLenketListeIterator(indeks);
     }
 
     private class DobbeltLenketListeIterator implements Iterator<T>
@@ -510,7 +511,19 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         private DobbeltLenketListeIterator(int indeks){
-            throw new UnsupportedOperationException();
+            if(indeks == 0) {
+                denne = hode;
+            }
+
+            else if(indeks == antall) {
+                denne = hale;
+            }
+
+            else {
+                for(int i = 1; i<indeks; i++) {
+                    denne = hode.neste;
+                }
+            }
         }
 
         @Override
@@ -528,9 +541,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 throw new NoSuchElementException("Lista er tom!");
             }
 
+            fjernOK = true;
 
+            T temp = denne.verdi;
+            denne = denne.neste;
 
-            return (T) denne;
+            return temp;
         }
 
         @Override

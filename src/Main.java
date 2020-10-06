@@ -37,7 +37,7 @@ public class Main {
         }
 
 */
-
+/*
         Integer [] array = new Integer[100];
         for (int a = 0; a < 99;  a++) {
             array[a] = a;
@@ -62,6 +62,16 @@ public class Main {
         System.out.println(tid);
         System.out.println(tid2);
 
+
+
+ */
+
+    String[] navn = {"Lars", "Anders", "Bodil", "Kari", "Per", "Berit"};
+    Liste<String> liste = new DobbeltLenketListe<>(navn);
+
+    liste.forEach(s -> System.out.print(s + " "));
+    System.out.println();
+    for (String s : liste) System.out.print(s + " ");
 
     }
 }
