@@ -39,18 +39,29 @@ public class Main {
 */
 
         Integer [] array = new Integer[100];
-        for (Integer a = 0; a < array.length; a++) {
-            array[a] = a+1;
+        for (int a = 0; a < 99;  a++) {
+            array[a] = a;
         }
 
         Liste<Integer> liste2 = new DobbeltLenketListe<>(array);
 
-        DobbeltLenketListe. sorter (liste2, Comparator. naturalOrder ());
         long tid = System.currentTimeMillis();
+        DobbeltLenketListe. sorter (liste2, Comparator.naturalOrder ());
         tid = System.currentTimeMillis() - tid;
 
+        Liste<Integer> liste3 = new DobbeltLenketListe<>(array);
+        Integer [] array2 = new Integer[200];
+        for (int a = 0; a < 200;  a++) {
+            array2[a] = a;
+        }
 
-        System. out .println(liste2);
+        long tid2 = System.currentTimeMillis();
+        DobbeltLenketListe. sorter (liste3, Comparator.naturalOrder ());
+        tid2 = System.currentTimeMillis() - tid2;
+
+        System.out.println(tid);
+        System.out.println(tid2);
+
 
     }
 }
