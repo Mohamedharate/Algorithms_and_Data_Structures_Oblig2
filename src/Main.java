@@ -48,14 +48,13 @@ public class Main {
         System.out.println(liste1); // [Anders, Berit, Bodil, Kari, Lars, Per]
 
 
-        /* Oppgave 4
+
         Integer[] s1 = {1,2,3,4,5,6};
 
         DobbeltLenketListe<Integer> l1 = new DobbeltLenketListe<>(s1);
 
         l1.inneholder(3);
 
-         */
 
 
 
