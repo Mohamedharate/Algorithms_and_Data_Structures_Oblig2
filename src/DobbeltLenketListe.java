@@ -174,6 +174,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void leggInn(int indeks, T verdi) { //oppgave 5
+       /*
         int count = 0;
 
         //Sjekker nullverider
@@ -213,6 +214,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                     n.neste = n;
                 }
             }
+            */
 /*
         //Når listen er tom fra før
         if(hode == null){
@@ -252,9 +254,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 */
 
-            count++;
-
-        }
 
         antall++;
         endringer++;
@@ -268,12 +267,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         Node temp = hode;
 
-        for(int i = 0; i<antall-1; i++) {
-            temp = temp.neste;
+        if(antall == 1) {
             if(temp.verdi.equals(verdi)) {
                 inneholder = true;
             }
         }
+
+        else{
+            for(int i = 0; i<antall; i++) {
+
+                if(temp.verdi.equals(verdi)) {
+                    inneholder = true;
+                }
+                temp = temp.neste;
+            }
+
+        }
+
 
         return inneholder;
     }
@@ -289,14 +299,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         else if(inneholder(verdi)) {
-            for(int i = 0; i < antall; i++){
-                temp = temp.neste;
-                if(temp.verdi.equals(verdi)) {
-                    indeks = count;
-                    System.out.print(indeks);
-                    return indeks;
+            if(temp.verdi.equals(verdi)) {
+                indeks = count;
+                return indeks;
+            }
+
+            else {
+                for(int i = 0; i < antall; i++){
+                    if(temp.verdi.equals(verdi)) {
+                        indeks = count;
+                        return indeks;
+                    }
+                    temp = temp.neste;
+                    count++;
                 }
-                count++;
             }
 
         }
