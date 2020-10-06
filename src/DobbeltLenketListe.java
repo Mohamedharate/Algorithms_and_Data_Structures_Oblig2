@@ -155,14 +155,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int antall() {
-        Node temp = hode;
-        int count  = 0;
-
-        while (temp != null){
-            temp = temp.neste;
-            count++;
-        }
-        return count;
+        return antall;
     }
 
     @Override
@@ -244,7 +237,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             throw new NullPointerException();
         }
         //Kast indexoutofbounds-exception dersom indeks er større eller lik antall
-        else if(indeks >=antall){
+        else if(indeks >= antall){
             throw new IndexOutOfBoundsException("Indeksen er utenfor listen");
         }
 
@@ -366,9 +359,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public String toString() {
 
-        StringBuilder res = new StringBuilder("[");
         if (tom())
             return "[]";
+
+        StringBuilder res = new StringBuilder("[");
+
 
 
         for(Node<T> i = hode ; i != hale ; i = i.neste)
@@ -462,18 +457,26 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     } // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-
+        T max = null;
+        T temp;
+        int j = 0;
+        //Går gjennom tabellen
         for(int i = 0;i <liste.antall();i++){
-            T max = liste.hent(i);
+            //i første runden blir max = første verdien i tabellen.
+            max = liste.hent(0);
 
-            for (int j = 1; j<liste.antall();j++){
+            //max = første verdien i tabellen. Nå går vi gjennom tabellen fra i = 1 og sjekker om verdiene er større
+            // enn max, hvis ja, oppdaterer vi max
+            for (j = 1; j<i;j++){
                 if ((c.compare(liste.hent(j),max)>0)){
                     max = liste.hent(j);
+
                 }
             }
 
-            liste.fjern(0);
-            liste.leggInn(max);
+            temp = liste.hent(liste.antall()-1-i);//Lagerer siste verdien i tabellen
+            liste.oppdater(liste.antall()-1-i,max);//Max-verdien bakerst
+            liste.oppdater(j,temp);//temp får indeksen til max
         }
     }
 
