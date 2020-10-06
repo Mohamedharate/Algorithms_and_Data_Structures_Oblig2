@@ -38,13 +38,19 @@ public class Main {
 
 */
 
-        String[] navn = { "Lars" , "Anders" , "Bodil" , "Kari" , "Per" , "Berit" };
-        Liste<String> liste1 = new DobbeltLenketListe<>(navn);
-        DobbeltLenketListe. sorter (liste1, Comparator. naturalOrder ());
-        System. out .println(liste1); // [Anders, Berit, Bodil, Kari, Lars, Per]
-        // Tabellen navn er upåvirket:
-        System. out .println(Arrays. toString (navn));
-        // [Lars, Anders, Bodil, Kari, Per, Berit]
+        Integer [] array = new Integer[100];
+        for (Integer a = 0; a < array.length; a++) {
+            array[a] = a+1;
+        }
+
+        Liste<Integer> liste2 = new DobbeltLenketListe<>(array);
+
+        DobbeltLenketListe. sorter (liste2, Comparator. naturalOrder ());
+        long tid = System.currentTimeMillis();
+        tid = System.currentTimeMillis() - tid;
+
+
+        System. out .println(liste2);
 
     }
 }

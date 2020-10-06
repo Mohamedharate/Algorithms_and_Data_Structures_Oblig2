@@ -562,28 +562,24 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
 
+        int antall = liste.antall();
+        if (antall==0 || antall==1){
+            return;
+        }
 
-        T max;
-        T temp;
+        //Antar at første er sortert, sjekker om resten er større eller mindre
+        for (int i=1;i<antall;i++){                             ////[c,b,a] -> [b,c,a] ->[b,a,c]->[a,b,c]
 
-        //Går gjennom tabellen
-        for(int i = 0;i <liste.antall();i++){
-            //i første runden blir max = første verdien i tabellen.
-            max = liste.hent(i);
-            int j = 0;
-            //max = første verdien i tabellen. Nå går vi gjennom tabellen fra i = 1 og sjekker om verdiene er større
-            // enn max, hvis ja, oppdaterer vi max
-            for (j = i+1; j<liste.antall()-1;j++){
-                T a = liste.hent(j);
-                if ((c.compare(a,max)>0)){
-                    max = a;
-                }
+            T verdi = liste.hent(i);
+
+            int j = i-1;
+            while(j>=0 && c.compare(liste.hent(j),verdi)>0){
+                //Bytter liste[j] og liste[i]
+                T temp = liste.hent(j);
+                liste.oppdater(j,liste.hent(j+1));
+                liste.oppdater(j+1,temp);
+                j--;
             }
-
-            temp = liste.hent(liste.antall()-1-i);//Lagerer siste verdien i tabellen
-            liste.oppdater(liste.antall()-1-i,max);//Max-verdien bakerst
-            liste.oppdater(j,temp);//temp får indeksen til max
-
         }
     }
 
