@@ -170,6 +170,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
         //Antall økes
         antall++;
+        endringer++;
         return true;
     }
 
