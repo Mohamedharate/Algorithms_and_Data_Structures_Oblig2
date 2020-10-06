@@ -182,12 +182,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         //Sjekker indeksen
-        if (indeks < 0) {
-            throw new IndexOutOfBoundsException("Indeksen kan ikke vaere negativ");
-        }
-
-        if(indeks > antall){
-            throw new IndexOutOfBoundsException("Indeksen kan ikke vaere større enn antall!");
+        if (indeks < 0 || indeks > antall) {
+            throw new IndexOutOfBoundsException("Indeksen kan ikke vaere negativ eller større enn antall!");
         }
 
         //Hvis lista er tom
@@ -200,6 +196,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return;
         }
 
+        //Hvis verdien legges inn først
         else if (indeks == 0) {
             Node<T> temp = hode;
 
@@ -212,6 +209,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return;
         }
 
+        //Hvis verdien legges inn sist
         else if(indeks == antall) {
             hale.neste = new Node<>(verdi,hale,null);
             hale = hale.neste;
@@ -221,6 +219,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             return;
         }
 
+        //Hvis verdien legges inn mellom to verdier
         else {
             Node<T> temp = hode;
             for (int i = 1; i < indeks; i++) temp = temp.neste;
@@ -241,14 +240,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         Node temp = hode;
 
+        //Hvis det et kun et element
         if(antall == 1) {
             if(temp.verdi.equals(verdi)) {
                 inneholder = true;
             }
         }
 
+        //Når det et flere elementer
         else{
+
+            //Forløkke som går gjennom  hele lista
             for(int i = 0; i<antall; i++) {
+
+                //Hvis verdien til noden er lik verdien vi søker etter blir boolean true
                 if(temp.verdi.equals(verdi)) {
                     inneholder = true;
                 }
@@ -267,10 +272,12 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         int indeks = 0;
         Node temp = hode;
 
+        //Sjekker etter null-verdier - hvis ja returnerer den -1
         if (verdi == null) {
             indeks = -1;
         }
 
+        //Bruker metoden inneholder for å sjekke om lista inneholder verdien og returnerer indeksen.
         else if(inneholder(verdi)) {
             if(temp.verdi.equals(verdi)) {
                 indeks = count;
@@ -513,7 +520,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public T next(){
-            throw new UnsupportedOperationException();
+            if(iteratorendringer != endringer){
+                throw new ConcurrentModificationException("Iteratorendringer er ikke lik endringer");
+            }
+
+            if(!(hasNext())) {
+                throw new NoSuchElementException("Lista er tom!");
+            }
+
+
+
+            return (T) denne;
         }
 
         @Override
