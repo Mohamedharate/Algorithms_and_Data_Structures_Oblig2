@@ -49,20 +49,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T hent(int indeks) {
-
-        //Kontrollerer at indeks ikke er null/
-        if (indeks < 0){
-            throw new IndexOutOfBoundsException();
-        }
-        //Kast indexoutofbounds-exception dersom indeks er større eller lik antall
-        else if(indeks >=antall){
-            throw new IndexOutOfBoundsException("Indeksen er utenfor listen");
-        }
-
-        //indeksKontroll(indeks, false);            //Indekskontroll gir veldig lang ventetid
-
-
-
+        indeksKontroll(indeks, false);            //Indekskontroll gir veldig lang ventetid
         return finnNode(indeks).verdi;
     }
 
@@ -155,14 +142,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int antall() {
-        Node temp = hode;
-        int count  = 0;
-
-        while (temp != null){
-            temp = temp.neste;
-            count++;
-        }
-        return count;
+        return antall;
     }
 
     @Override
@@ -468,10 +448,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 hale.neste = null;
             }
             else if(denne.forrige == hode){ //Vi skal fjerne den første
-
+                hode = denne;
+                hode.forrige = null;
             }
+            else{
+                Node<T> p = denne.forrige.forrige;
+                Node<T> q = denne.forrige;
+                Node<T> r = denne;
+
+                p.neste = r;
+                r.forrige = p;
+            }
+            antall--;
+            endringer++;
             iteratorendringer++;
-            throw new UnsupportedOperationException();
         }
 
     } // class DobbeltLenketListeIterator
