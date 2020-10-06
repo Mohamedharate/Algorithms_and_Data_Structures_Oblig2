@@ -49,20 +49,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public T hent(int indeks) {
-
-        //Kontrollerer at indeks ikke er null/
-        if (indeks < 0){
-            throw new IndexOutOfBoundsException();
-        }
-        //Kast indexoutofbounds-exception dersom indeks er større eller lik antall
-        else if(indeks >=antall){
-            throw new IndexOutOfBoundsException("Indeksen er utenfor listen");
-        }
-
-        //indeksKontroll(indeks, false);            //Indekskontroll gir veldig lang ventetid
-
-
-
+        indeksKontroll(indeks, false);            //Indekskontroll gir veldig lang ventetid
         return finnNode(indeks).verdi;
     }
 
@@ -77,6 +64,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         hode = hale = null;
         antall = 0;
         endringer = 0;
+
 
     }
 
@@ -450,8 +438,33 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         @Override
         public void remove(){
-            throw new UnsupportedOperationException();
-           // iteratorendringer++;
+            if (!fjernOK){
+                throw new IllegalStateException("Denne metoden kan ikke kalles");
+            }
+            fjernOK = false; //Vi kan ikke fjerne denne igjen
+
+            //Sjekker etter spesialtilfeller
+            if(antall == 1){ //Vi har kun ett element
+                hode=hale=null;
+            }else if (denne == null){ //Vi er på siste element
+                hale = denne.forrige;
+                hale.neste = null;
+            }
+            else if(denne.forrige == hode){ //Vi skal fjerne den første
+                hode = denne;
+                hode.forrige = null;
+            }
+            else{
+                Node<T> p = denne.forrige.forrige;
+                Node<T> q = denne.forrige;
+                Node<T> r = denne;
+
+                p.neste = r;
+                r.forrige = p;
+            }
+            antall--;
+            endringer++;
+            iteratorendringer++;
         }
 
     } // class DobbeltLenketListeIterator
