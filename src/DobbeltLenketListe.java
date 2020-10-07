@@ -532,7 +532,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if(ant == 1){ //Vi har kun ett element
                 hode=hale=null;
             }else if (denne == null){ //Vi er på siste element
-                hale = hale.forrige;
+                Node<T> temp = hale.forrige;
+                hale = temp;
                 hale.neste = null;
             }
             else if(denne.forrige == hode){ //Vi skal fjerne den første
