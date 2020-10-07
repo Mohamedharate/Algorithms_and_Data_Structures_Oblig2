@@ -93,7 +93,9 @@ Da vil den slette denne verdien på samme måte som fjern(indeks)-metoden gjør,
 
 * Oppgave 7:
 
-
+Denne oppgaven valgte jeg å løse ved å gå gjennom alle elementer fra hode til hale 
+ved bruk av en while-løkke. Etter å ha slettet alle elementer, setter jeg hode = hale = null, 
+nullstiller antall og øker endringer med 1. 
 
 * Oppgave 8:
 
