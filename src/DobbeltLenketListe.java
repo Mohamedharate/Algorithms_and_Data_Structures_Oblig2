@@ -189,7 +189,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //Hvis lista er tom
         if (hode == null) {
-            hode = hale = new Node<>(verdi);
+            hode = hale = new Node<>(verdi, null, null);
             hale.forrige = hale.neste = null;
 
             antall++;
@@ -222,10 +222,13 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
         //Hvis verdien legges inn mellom to verdier
         else {
-            Node<T> temp = hode;
-            for (int i = 1; i < indeks; i++) temp = temp.neste;
+            Node<T> nodenetter = finnNode(indeks);
+            Node<T> nodenfør = finnNode(indeks-1);
 
-                temp.neste = new Node<>(verdi, temp.forrige, temp.neste);
+            Node<T> node = new Node<T> (verdi,nodenfør,nodenetter);
+
+            nodenfør.neste = node;
+            nodenetter.forrige = node;
 
             antall++;
             endringer++;
@@ -467,7 +470,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         if (tom())
             return "[]";
 
-        for (Node<T> i = hale; i != hode; i=i.forrige)
+        for (Node<T> i = hale; i != hode && i != null; i=i.forrige)
            innholdOmvendt.append(i.verdi).append(", ");
 
         if (antall()==1){
