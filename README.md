@@ -27,7 +27,7 @@ Vi har brukt git til å dokumentere arbeidet vårt. Vi har 16 commits totalt, og
 I oppgaven har vi hatt følgende arbeidsfordeling:
 * Mohamed K. Harate har hatt hovedansvar for oppgave 1, 2, og 7. 
 * Andreas Torres Hansen har hatt hovedansvar for oppgave 3, 6, og 9. 
-* Hanna Bækken Nilsen har hatt hovedansvar for oppgave 4, 5 og 8. 
+* Fatima har hatt hovedansvar for oppgave 7 og 8. 
 * Vi har i fellesskap løst oppgave 10. 
 
 # Beskrivelse av oppgaveløsning (maks 5 linjer per oppgave)
@@ -66,20 +66,7 @@ fra "fra"-indeksen til "til"-indeksen som blir tatt inn som parametere. Deretter
 DoubleLinkedList(T[]), og oppretter en ny lenket liste av arrayet.
 
 * Oppgave 4:
-
-Denne oppgaven har jeg løst ved å bruke if-setninger ved å sjekke om verdien finnes i lista eller ikke. Om verdien fins skal jeg returnere 1
-hvis ikke skal jeg returnere -1. Jeg skal også returnere -1 hvis veriden er en null-verdi. Jeg lager også en metode, boolean inneholder, som 
-returnerer false eller true om den finner verdien i lista. Hvis den returerer true skal indeksTil metoden 
-finne indeksen - ved hjelp av forløkke - og returnere denne.
-
-
 * Oppgave 5:
-
-Metoden leggInn(int indeks, T verdi) skal legge inn en verdi på ønsket indeks inn i en liste. Ved hjelp av if-setninger får jeg sjekket om 
-man skal legge inn verdien, først, sist eller mellom to verdier. Utifra disse utfallene laget jeg kode som tilfredstiller både posisjon og 
-om pekerne blir korrekte.  
-
-
 * Oppgave 6:
 
 Fjern(index):
@@ -92,22 +79,6 @@ Denne metoden har jeg valgt å løse ved å implementere en for-løkke som går 
 Da vil den slette denne verdien på samme måte som fjern(indeks)-metoden gjør, ved å sjekke etter spesialtilfellene.
 
 * Oppgave 7:
-
-
-
 * Oppgave 8:
-
-8a - T next metoden skal sjekke om iteratorendringer blir lik endringer for å informere at listen er endret. 
-Motoden skal også sjekke om hasNext er sann, hvsi ikke kastes det en feilmelding om at det ikke er flere igjen i listen. 
-
-8b - I denne oppgaven skal man bare returnere en instans av iteratorklassen.
-
-8c - Konstruktøren skal være nesten helt lik som den fertdigkodet kontruktøren, men denne noden skal 
-skal peke på den indeksen som skal inn i konstruktøren. Da bruker jeg metoden finnNode som setter riktig peker på 
-denne. 
-
-8d - I denne oppgaven sjekker jeg ved hjelp av indeksKontroll om indeksen er riktig. Hvis denne er riktig 
-returnerer jeg en instans av iteratorklassen ved hjelp av kontruktøren i oppgave c. 
-
 * Oppgave 9:
 * Oppgave 10:

@@ -93,13 +93,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             antall++;
         }
 
-        /*
-        * Når vi kommer hit, da er alle verdiene til index er null.
-        * Både hode og hale er lik a[index] som er første verdien i arrayet som ikke er null
-        * Vi looper gjennom arrayet fra index siden vi allerede har sjekket de tidligere verdiene
-        * Vi sjekker at verdien ikke er null, hvis ja så blir denne verdien den nye hale-verdien.
-        * Vi øker antall med en for hver gang vi får en ny node. Det vil si at antall er lik antall noder i listen.
-        */
         for(index = index;index<a.length;index++){
             if (a[index] != null){
                 hale.neste = new Node<>(a[index],hale,null);
@@ -432,6 +425,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             current.forrige = null;
             current = current.neste;
         }
+
         hode = hale = null;
         antall = 0;
         endringer++;
@@ -526,9 +520,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 throw new IllegalStateException("Denne metoden kan ikke kalles");
             }
 
-            int ant = antall;
             //Sjekker etter spesialtilfeller
-            if(ant == 1){ //Vi har kun ett element
+            if(hode==hale){ //Vi har kun ett element
                 hode=hale=null;
             }else if (denne == null){ //Vi er på siste element
                 Node<T> temp = hale.forrige;
