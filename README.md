@@ -42,6 +42,7 @@ lik det nye elementet.
         
                                                           
 * Oppgave 2: 
+
 2A - toString og omvendtString løste jeg ved å opprette en stringBuilder som inneholder "[". Det først jeg gjør er
 å sjekke at listen har innhold. Hvis ikke returner jeg "[]", men hvis listen har innhold, bruker jeg en for-løkke
 for å gå gjennom listens elementer og legger til verdien til hvert element til i stringBuilder-en. returner så ut stringBuileren. 
@@ -79,6 +80,10 @@ Denne metoden har jeg valgt å løse ved å implementere en for-løkke som går 
 Da vil den slette denne verdien på samme måte som fjern(indeks)-metoden gjør, ved å sjekke etter spesialtilfellene.
 
 * Oppgave 7:
+Denne oppgaven valgte jeg å løse ved å gå gjennom alle elementer fra hode til hale 
+ved bruk av en while-løkke. Etter å ha slettet alle elementer, setter jeg hode = hale = null, 
+nullstiller antall og øker endringer med 1. 
+
 * Oppgave 8:
 * Oppgave 9:
 * Oppgave 10:
