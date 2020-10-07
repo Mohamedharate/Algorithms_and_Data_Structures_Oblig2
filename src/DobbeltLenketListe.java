@@ -525,7 +525,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if (!fjernOK){
                 throw new IllegalStateException("Denne metoden kan ikke kalles");
             }
-            fjernOK = false; //Vi kan ikke fjerne denne igjen
 
             int ant = antall;
             //Sjekker etter spesialtilfeller
@@ -550,6 +549,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             antall--;
             endringer++;
             iteratorendringer++;
+
+            fjernOK = false; //Vi kan ikke fjerne denne igjen
         }
 
     } // class DobbeltLenketListeIterator
