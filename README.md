@@ -76,9 +76,13 @@ og at disse kan festes til hverandre.
 
 Fjern(verdi): 
 Denne metoden har jeg valgt å løse ved å implementere en for-løkke som går gjennom hele listen fram til den finner verdien vi leter etter.
-Da vil den slette denne verdien på samme måte som fjern(indeks)-metoden gjør, ved å sjekke etter spesialtilfellene.
+Da vil den slette denne verdien på samme måte som fjern(indeks)-metoden gjør, ved å sjekke etter spesialtilfellene. Denne alternerer i effektivitet fordi den noen ganger må gå gjennom hele listen.
 
 * Oppgave 7:
 * Oppgave 8:
 * Oppgave 9:
+Denne oppgaven har jeg valgt å løse med samme fjerningsmetodikk som jeg har brukt i oppgave 6. Den sjekker om hvorvidt noden vi skal fjerne ligger
+mellom to noder, ved hjelp av if-else-setninger.Så retter den neste-pekeren og forrige-pekeren på de nodene rundt den til hverandre, og "lar" java slette noden selv.
 * Oppgave 10:
+I denne sorterings-metoden har jeg valgt å bruke insertion-sort algoritmen. Den antar altså at første element i listen
+er sortert, og sjekker deretter om resten av tallene som kommer etter er mindre. Dersom de er mindre flyttes de bak den. Dette gjøres parvis for alle verdiene.

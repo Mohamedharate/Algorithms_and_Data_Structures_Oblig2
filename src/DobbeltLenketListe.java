@@ -526,9 +526,8 @@ public class DobbeltLenketListe<T> implements Liste<T> {
                 throw new IllegalStateException("Denne metoden kan ikke kalles");
             }
 
-            int ant = antall;
             //Sjekker etter spesialtilfeller
-            if(ant == 1){ //Vi har kun ett element
+            if(hode==hale){ //Vi har kun ett element
                 hode=hale=null;
             }else if (denne == null){ //Vi er på siste element
                 Node<T> temp = hale.forrige;
