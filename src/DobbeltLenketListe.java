@@ -449,18 +449,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         for(Node<T> i = hode ; i != hale ; i = i.neste)
             res.append(i.verdi).append(", ");
 
-         /*
-        Node current = hode;
-
-        while (current != null){
-            res.append(current.verdi);
-            if (current.neste != null){
-                res.append(", ");
-            }
-            current = current.neste;
-        }
-          */
-
         return res.append(hale.verdi).append("]").toString();
     }
 
@@ -477,18 +465,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             hale = hode;
         }
 
-        /*
-        Node current = hale;
-
-        while (current != null){
-            innholdOmvendt.append(current.verdi);
-            if (current.forrige != null){
-                innholdOmvendt.append(", ");
-            }
-            current = current.forrige;
-        }
-
-         */
         return innholdOmvendt.append(hode.verdi).append("]").toString();
     }
 
