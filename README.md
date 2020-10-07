@@ -110,4 +110,11 @@ denne.
 returnerer jeg en instans av iteratorklassen ved hjelp av kontruktøren i oppgave c. 
 
 * Oppgave 9:
+
+Denne oppgaven har jeg valgt å løse med samme fjerningsmetodikk som jeg har brukt i oppgave 6. Den sjekker om hvorvidt noden vi skal fjerne ligger
+mellom to noder, ved hjelp av if-else-setninger.Så retter den neste-pekeren og forrige-pekeren på de nodene rundt den til hverandre, og "lar" java slette noden selv.
 * Oppgave 10:
+
+I denne sorterings-metoden har jeg valgt å bruke insertion-sort algoritmen. Den antar altså at første element i listen
+er sortert, og sjekker deretter om resten av tallene som kommer etter er mindre. Dersom de er mindre flyttes de bak den. Dette gjøres parvis for alle verdiene.
+
