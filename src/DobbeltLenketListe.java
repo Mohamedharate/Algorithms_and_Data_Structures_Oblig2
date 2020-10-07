@@ -376,7 +376,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public T fjern(int indeks) {
 
-
         if (hode == null || indeks > antall-1 || indeks < 0){ //Listen er tom
             throw new IndexOutOfBoundsException("Arrayet er tomt");
         }
@@ -492,19 +491,10 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         }
 
         private DobbeltLenketListeIterator(int indeks){
-            if(indeks == 0) {
-                denne = hode;
-            }
-
-            else if(indeks == antall) {
-                denne = hale;
-            }
-
-            else {
-                for(int i = 1; i<indeks; i++) {
-                    denne = hode.neste;
-                }
-            }
+            indeksKontroll(indeks,false);
+            denne = finnNode(indeks);
+            fjernOK = false;
+            iteratorendringer = endringer;
         }
 
         @Override
@@ -541,7 +531,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             if(antall == 1){ //Vi har kun ett element
                 hode=hale=null;
             }else if (denne == null){ //Vi er på siste element
-                hale = denne.forrige;
+                hale = hale.forrige;
                 hale.neste = null;
             }
             else if(denne.forrige == hode){ //Vi skal fjerne den første
