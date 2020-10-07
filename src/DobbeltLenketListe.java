@@ -216,11 +216,11 @@ public class DobbeltLenketListe<T> implements Liste<T> {
         //Hvis verdien legges inn mellom to verdier
         else {
             Node<T> nodenetter = finnNode(indeks);
-            Node<T> nodenfør = finnNode(indeks-1);
+            Node<T> nodenfor = finnNode(indeks-1);
 
-            Node<T> node = new Node<T> (verdi,nodenfør,nodenetter);
+            Node<T> node = new Node<T> (verdi,nodenfor,nodenetter);
 
-            nodenfør.neste = node;
+            nodenfor.neste = node;
             nodenetter.forrige = node;
 
             antall++;
