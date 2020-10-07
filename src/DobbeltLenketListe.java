@@ -233,6 +233,7 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             antall++;
             endringer++;
             return;
+
         }
 
 
