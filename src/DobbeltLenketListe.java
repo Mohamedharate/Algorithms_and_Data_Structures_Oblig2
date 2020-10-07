@@ -527,8 +527,9 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             fjernOK = false; //Vi kan ikke fjerne denne igjen
 
+            int ant = antall;
             //Sjekker etter spesialtilfeller
-            if(antall == 1){ //Vi har kun ett element
+            if(ant == 1){ //Vi har kun ett element
                 hode=hale=null;
             }else if (denne == null){ //Vi er på siste element
                 hale = hale.forrige;
@@ -540,7 +541,6 @@ public class DobbeltLenketListe<T> implements Liste<T> {
             }
             else{
                 Node<T> p = denne.forrige.forrige;
-                Node<T> q = denne.forrige;
                 Node<T> r = denne;
 
                 p.neste = r;
